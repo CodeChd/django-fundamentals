@@ -11,3 +11,6 @@ class JobPosting(models.Model):
 
     # model manager - objects from python we can use to interact with the database, basically its ORM methods
 
+    def __str__(self):
+        return f"{self.title} | {self.company} | Active: {self.is_active}"
+
