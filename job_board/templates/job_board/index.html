@@ -1,0 +1,32 @@
+{% extends 'job_board/_base.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="container mx-auto py-8">
+    <ul class="space-y-6">
+        {% for posting in job_postings %}
+            <li class="bg-white shadow-md rounded-lg p-6">
+                <div class="mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800">
+                         {{ posting.title }}
+                    </h2>
+                    <hr class="mt-4"/>
+                </div>
+                <ul class="space-y-2">
+                    <li class="text-gray-700">
+                        <span class="font-medium">Company:</span> {{ posting.company }}
+                    </li>
+                    <li class="text-gray-700">
+                        <span class="font-medium">Salary:</span> ${{ posting.salary|intcomma }}
+                    </li>
+                    <li>
+                        <a href="{% url 'job-detail' posting.pk %}" class="text-blue-500 hover:underline">
+                            View Job Details
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
